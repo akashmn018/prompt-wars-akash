@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Social Bridge</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* Navigation */
+        nav {
+            background: #2563eb;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #1d4ed8;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            width: 90%;
+            max-width: 600px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        /* Features */
+        .features {
+            padding: 50px 7%;
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .card h3 {
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 30px;
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">🌉 Social Bridge</div>
+
+        <div>
+            <a href="#">Home</a>
+            <a href="#schemes">Schemes</a>
+            <a href="#help">Help</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Welcome to Social Bridge</h1>
+
+        <p>
+            Find government schemes and social benefits easily.
+        </p>
+
+        <input
+            type="text"
+            class="search-box"
+            placeholder="Search for schemes, benefits or services..."
+        >
+    </section>
+
+    <section class="features" id="schemes">
+
+        <h2>Explore Social Benefits</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🎓 Education</h3>
+                <p>
+                    Find scholarships and education support schemes.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🏥 Healthcare</h3>
+                <p>
+                    Discover healthcare and medical assistance programs.
+                </p>
+                <button onclick="openEligibility()">Check Eligibility</button>
+            </div>
+
+            <div class="card">
+                <h3>💰 Financial Support</h3>
+                <p>
+                    Explore financial assistance and welfare schemes.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🏠 Housing</h3>
+                <p>
+                    Find housing and support programs for eligible citizens.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="help">
+        <p>© 2026 Social Bridge | Connecting People with Social Benefits</p>
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+</html>

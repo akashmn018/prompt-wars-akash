@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Bridge - Eligibility</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #1976d2;
+            color: white;
+            padding: 18px 40px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 30px;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #125ca5;
+        }
+
+        #result {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            border-left: 6px solid #2e7d32;
+            background: #f1f8e9;
+            border-radius: 10px;
+        }
+
+        #result h2 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        .details {
+            line-height: 1.8;
+        }
+
+        .official {
+            display: inline-block;
+            margin-top: 15px;
+            color: #1976d2;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .scheme-card {
+    background: white;
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border-left: 5px solid #1976d2;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.scheme-card h3 {
+    color: #1976d2;
+    margin-bottom: 10px;
+}
+
+.scheme-card p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.scheme-btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 10px 16px;
+    background: #2e7d32;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.scheme-btn:hover {
+    background: #1b5e20;
+}
+
+        footer {
+            text-align: center;
+            background: #172033;
+            color: white;
+            padding: 18px;
+            margin-top: 40px;
+        }
+        .apply-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 22px;
+    background: #2e7d32;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.apply-btn:hover {
+    background: #1b5e20;
+}
+    </style>
+</head>
+
+<body>
+
+<header>
+    🏛️ Social Bridge
+</header>
+
+<div class="container">
+
+    <div class="box">
+
+        <h1>Check Your Eligibility</h1>
+
+        <p class="subtitle">
+            Enter your details to find suitable government schemes and social benefits.
+        </p>
+
+        <form id="eligibilityForm">
+
+            <label>Age</label>
+            <input type="number" id="age" required min="1">
+
+            <label>State</label>
+            <input type="text" id="state" placeholder="Example: Karnataka" required>
+
+            <label>Annual Income (₹)</label>
+            <input type="number" id="income" required min="0">
+
+            <label>Occupation</label>
+            <select id="occupation">
+                <option value="Unemployed">Unemployed</option>
+                <option value="Student">Student</option>
+                <option value="Farmer">Farmer</option>
+                <option value="Employee">Employee</option>
+                <option value="Self Employed">Self Employed</option>
+            </select>
+
+            <label>Benefit Category</label>
+            <select id="category">
+                <option value="Healthcare">Healthcare</option>
+                <option value="Education">Education</option>
+                <option value="Financial">Financial Support</option>
+                <option value="Housing">Housing</option>
+            </select>
+
+            <button type="submit">
+                🔍 Find Eligible Schemes
+            </button>
+
+        </form>
+
+        <div id="result">
+
+            <h2>✅ Recommended Scheme</h2>
+
+            <h3 id="schemeList"></h3>
+
+            <div class="details">
+                <p><b>Age:</b> <span id="rAge"></span></p>
+                <p><b>State:</b> <span id="rState"></span></p>
+                <p><b>Annual Income:</b> ₹<span id="rIncome"></span></p>
+                <p><b>Occupation:</b> <span id="rOccupation"></span></p>
+                <p><b>Category:</b> <span id="rCategory"></span></p>
+            </div>
+
+            <p style="margin-top:15px;">
+                <b>Possible Benefit:</b><br>
+                Health coverage and assistance for eligible beneficiaries,
+                subject to official government eligibility criteria.
+            </p>
+
+            <a class="official"
+               href="https://nha.gov.in/"
+               target="_blank">
+                🔗 Check Official Government Details
+            </a>
+            <a href="https://nha.gov.in/"
+   target="_blank"
+   class="apply-btn">
+   📝 Apply / Check Official Website
+</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Social Bridge | Connecting People with Social Benefits
+</footer>
+
+
+<script>
+
+document.getElementById("eligibilityForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const age = document.getElementById("age").value;
+    const state = document.getElementById("state").value;
+    const income = document.getElementById("income").value;
+    const occupation = document.getElementById("occupation").value;
+    const category = document.getElementById("category").value;
+
+    let schemes = [];
+    if (category === "Healthcare") {
+
+    schemes.push({
+        name: "Ayushman Bharat - PM-JAY",
+        benefit: "Health coverage and cashless hospitalisation for eligible families.",
+        link: "https://www.myscheme.gov.in/hi/schemes/ab-pmjay"
+    });
+
+    if (Number(income) <= 200000) {
+        schemes.push({
+            name: "Government Health Support Schemes",
+            benefit: "Healthcare assistance for eligible low-income families.",
+            link: "https://www.myscheme.gov.in/"
+        });
+    }
+}
+
+if (category === "Education") {
+
+    if (Number(age) >= 5 && Number(age) <= 30) {
+        schemes.push({
+            name: "National Scholarship Schemes",
+            benefit: "Financial assistance for eligible students.",
+            link: "https://www.myscheme.gov.in/"
+        });
+    }
+
+    if (occupation === "Student") {
+        schemes.push({
+            name: "Student Education Support",
+            benefit: "Government support for eligible students.",
+            link: "https://www.myscheme.gov.in/"
+        });
+    }
+}
+
+if (category === "Financial") {
+
+    if (Number(income) <= 200000) {
+        schemes.push({
+            name: "Government Financial Assistance Schemes",
+            benefit: "Financial assistance for eligible low-income citizens.",
+            link: "https://www.myscheme.gov.in/"
+        });
+    }
+
+    if (occupation === "Unemployed") {
+        schemes.push({
+            name: "Employment & Livelihood Support",
+            benefit: "Government schemes supporting employment and livelihoods.",
+            link: "https://www.myscheme.gov.in/"
+        });
+    }
+}
+
+if (category === "Housing") {
+
+    if (Number(income) <= 300000) {
+        schemes.push({
+            name: "Pradhan Mantri Awas Yojana",
+            benefit: "Housing assistance for eligible beneficiaries.",
+            link: "https://www.myscheme.gov.in/"
+        });
+    }
+
+    if (state.toLowerCase() === "karnataka") {
+        schemes.push({
+            name: "Karnataka Housing Support",
+            benefit: "Housing-related government support.",
+            link: "https://www.myscheme.gov.in/"
+        });
+    }
+}
+
+if (occupation === "Farmer") {
+
+    schemes.push({
+        name: "PM-KISAN",
+        benefit: "Income support for eligible farmer families.",
+        link: "https://www.myscheme.gov.in/"
+    });
+    schemes.push({
+    name: "Agriculture Support Schemes",
+    benefit: "Government support for farmers, agriculture and rural livelihoods.",
+    link: "https://www.myscheme.gov.in/"
+});
+}
+if (state.toLowerCase() === "karnataka") {
+
+    schemes.push({
+        name: "Karnataka Government Schemes",
+        benefit: "Explore government welfare schemes and services available in Karnataka.",
+        link: "https://www.myscheme.gov.in/"
+    });
+
+}
+
+
+
+if (schemes.length === 0) {
+
+    schemes.push({
+        name: "Explore Government Schemes",
+        benefit: "Find more government schemes based on your eligibility.",
+        link: "https://www.myscheme.gov.in/"
+    });
+}
+    
+
+    const schemeList = document.getElementById("schemeList");
+
+    schemeList.innerHTML = "";
+
+    schemes.forEach(function(scheme) {
+
+        schemeList.innerHTML += `
+            <div class="scheme-card">
+
+                <h3>📌 ${scheme.name}</h3>
+
+                <p>
+                    <b>Benefit:</b> ${scheme.benefit}
+                </p>
+
+                <a href="${scheme.link}"
+                   target="_blank"
+                   class="scheme-btn">
+                   🔗 Check Official Details
+                </a>
+
+            </div>
+        `;
+
+    });
+
+    document.getElementById("rAge").textContent = age;
+    document.getElementById("rState").textContent = state;
+    document.getElementById("rIncome").textContent =
+        Number(income).toLocaleString("en-IN");
+    document.getElementById("rOccupation").textContent = occupation;
+    document.getElementById("rCategory").textContent = category;
+
+    document.getElementById("result").style.display = "block";
+
+});
+
+</script>
+
+</body>
+</html>
